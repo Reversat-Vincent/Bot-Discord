@@ -1,7 +1,6 @@
-const ms = require('ms');
 module.exports = {
-    name: "mute",
-    help: process.env.PREFIX.concat(this.name, " <@user> [<time>]"),
+    name: "unmute",
+    help: process.env.PREFIX.concat(this.name, " <@user>"),
     execute(msg, args) {
         let err = "";
         if (msg.member.hasPermission("MANAGE_MESSAGES")) {
@@ -9,16 +8,9 @@ module.exports = {
             if (target) {
                 let mutedRole = msg.guild.roles.cache.find(r => r.name === "Muted");
                 let memberRole = msg.guild.roles.cache.find(r => r.name === "Member");
-                target.roles.add(mutedRole);
-                target.roles.remove(memberRole);
-                msg.reply("<@!"+target.id+"> was muted");
-                setTimeout(() => {
-                    if (target.roles.cache.find(r => r.name === "Muted")) {
-                        target.roles.add(memberRole);
-                        target.roles.remove(mutedRole);
-                        msg.reply("<@!"+target.id+"> was unmuted");
-                    }
-                }, ms(args[2]));
+                target.roles.add(memberRole);
+                target.roles.remove(mutedRole);
+                msg.reply("<@!"+target.id+"> was unmuted");
             } else {
                 err = err.concat("<@user> est manquant");
             }
