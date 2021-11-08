@@ -1,5 +1,19 @@
 require('dotenv').config();
 const Discord = require('discord.js');
+const mongoose = require('mongoose');
+
+const DB_ADDRESS = 'mongodb://127.0.0.1:27017/Triggers';
+mongoose.connect(
+    DB_ADDRESS,
+    {useNewUrlParser : true},
+    (error) => {
+        if(error)
+            console.log(error);
+        else
+            console.log("Connected to DB");
+    }
+);
+
 
 const client = new Discord.Client({partials: ["MESSAGE", "CHANNEL", "REACTION"]});
 
