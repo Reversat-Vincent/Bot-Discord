@@ -31,7 +31,7 @@ module.exports = {
                     const res = await TriggerObject.create({trigger: trigger, reponse: reponse});
                     msg.reply("Successfully created trigger **" + trigger + "**");
                 } catch (err) {
-                    msg.reply('Error : failure during trigger creation');
+                    msg.reply('Erreur : failure during trigger creation');
                 }
             } else {
                 err = err.concat("paramètre(s) invalide(s)");

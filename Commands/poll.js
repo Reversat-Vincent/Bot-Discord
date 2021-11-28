@@ -2,7 +2,7 @@ const Discord = require('discord.js');
 module.exports = {
     name: "poll",
     help: " <title> [<args>]",
-    execute(msg, args) {
+    async execute(msg, args) {
         let err = "";
         if (msg.member.hasPermission("SEND_MESSAGES")) {
             if (args[1]) {

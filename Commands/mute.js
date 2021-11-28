@@ -2,7 +2,7 @@ const ms = require('ms');
 module.exports = {
     name: "mute",
     help: " <@user> [<time>]",
-    execute(msg, args) {
+    async execute(msg, args) {
         let err = "";
         if (msg.member.hasPermission("MANAGE_MESSAGES")) {
             let target = msg.mentions.members.first();

@@ -27,17 +27,20 @@ const trigger = require('./trigger.js');
 const queue = new Map();
 
 client.on('message', async (msg) => {
+	const serverQueue = queue.get(msg.guild.id);
 	if (msg.content.startsWith(process.env.PREFIX)) {
 		const args = msg.content.split(' ');
 		if (cmd.get(args[0].substring(1))) {
 			try {
 				if (args[1] === "--help" || args[1] === "--h") {
 					msg.reply(args[0].concat(cmd.get(args[0].substring(1)).help));
+				} else if (cmd.get(args[0].substring(1)).music === true) {
+					cmd.get(args[0].substring(1)).execute(msg, args, serverQueue, queue);
 				} else {
 					cmd.get(args[0].substring(1)).execute(msg, args);
 				}
 			} catch (err) {
-				msg.reply('Error : '.concat(err));
+				msg.reply('Erreur : '.concat(err));
 			}
 		} else {
 			msg.reply("Commande inconnue");

@@ -20,7 +20,7 @@ module.exports = {
 
 			msg.reply(embed);
 		} catch(err) {
-			msg.reply('Error : failure during database reading.');
+			msg.reply('Erreur : failure during database reading.');
 		}
 
 		if (err != "") {

@@ -1,7 +1,7 @@
 module.exports = {
     name: "kick",
     help: " <@user> [<raison>]",
-    execute(msg, args) {
+    async execute(msg, args) {
         let err = "";
         if (msg.member.hasPermission("KICK_MEMBERS")) {
             let target = msg.mentions.members.first();

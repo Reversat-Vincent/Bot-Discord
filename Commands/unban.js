@@ -1,7 +1,7 @@
 module.exports = {
     name: "unban",
     help: " <@user>",
-    execute(msg, args) {
+    async execute(msg, args) {
         let err = "";
         if (msg.member.hasPermission("BAN_MEMBERS")) {
             msg.guild.fetchBans().then(bans => {

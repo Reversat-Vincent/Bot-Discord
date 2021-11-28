@@ -1,7 +1,7 @@
 module.exports = {
     name: "ban",
     help: " <@user> [<raison>]",
-    execute(msg, args) {
+    async execute(msg, args) {
         let err = "";
         if (msg.member.hasPermission("BAN_MEMBERS")) {
             let target = msg.mentions.members.first();

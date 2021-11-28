@@ -1,7 +1,7 @@
 module.exports = {
     name: "clear",
     help: " <nbMessages>",
-    execute(msg, args) {
+    async execute(msg, args) {
         let err = "";
         let nbMessages = parseInt(args[1], 10);
         if (nbMessages > 0 && nbMessages <= 100) {
