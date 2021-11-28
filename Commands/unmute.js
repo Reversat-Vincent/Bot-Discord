@@ -1,6 +1,6 @@
 module.exports = {
     name: "unmute",
-    help: process.env.PREFIX.concat(this.name, " <@user>"),
+    help: " <@user>",
     execute(msg, args) {
         let err = "";
         if (msg.member.hasPermission("MANAGE_MESSAGES")) {

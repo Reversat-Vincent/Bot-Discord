@@ -1,7 +1,7 @@
 const ms = require('ms');
 module.exports = {
     name: "mute",
-    help: process.env.PREFIX.concat(this.name, " <@user> [<time>]"),
+    help: " <@user> [<time>]",
     execute(msg, args) {
         let err = "";
         if (msg.member.hasPermission("MANAGE_MESSAGES")) {

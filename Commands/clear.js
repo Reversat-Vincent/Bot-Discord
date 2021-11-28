@@ -1,6 +1,6 @@
 module.exports = {
     name: "clear",
-    help: process.env.PREFIX.concat(this.name, " <nbMessages>"),
+    help: " <nbMessages>",
     execute(msg, args) {
         let err = "";
         let nbMessages = parseInt(args[1], 10);

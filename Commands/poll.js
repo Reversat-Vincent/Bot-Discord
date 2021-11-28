@@ -1,7 +1,7 @@
 const Discord = require('discord.js');
 module.exports = {
     name: "poll",
-    help: process.env.PREFIX.concat(this.name, " <title> [<args>]"),
+    help: " <title> [<args>]",
     execute(msg, args) {
         let err = "";
         if (msg.member.hasPermission("SEND_MESSAGES")) {

@@ -22,19 +22,28 @@ client.once('reconnecting', () => console.log("Reconnected !"));
 client.once('disconnect', () => console.log("Disconnected !"));
 
 const cmd = require('./commands.js');
+const trigger = require('./trigger.js');
+
+const queue = new Map();
 
 client.on('message', async (msg) => {
 	if (msg.content.startsWith(process.env.PREFIX)) {
 		const args = msg.content.split(' ');
 		if (cmd.get(args[0].substring(1))) {
 			try {
-				cmd.get(args[0].substring(1)).execute(msg, args);
+				if (args[1] === "--help" || args[1] === "--h") {
+					msg.reply(args[0].concat(cmd.get(args[0].substring(1)).help));
+				} else {
+					cmd.get(args[0].substring(1)).execute(msg, args);
+				}
 			} catch (err) {
-				msg.reply('Argument(s) invalide(s) : '.concat(err));
+				msg.reply('Error : '.concat(err));
 			}
 		} else {
 			msg.reply("Commande inconnue");
 		}
+	} else {
+		trigger.execute(msg);
 	}
 });
 

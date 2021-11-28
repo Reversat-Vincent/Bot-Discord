@@ -1,6 +1,6 @@
 module.exports = {
     name: "unban",
-    help: process.env.PREFIX.concat(this.name, " <@user>"),
+    help: " <@user>",
     execute(msg, args) {
         let err = "";
         if (msg.member.hasPermission("BAN_MEMBERS")) {
